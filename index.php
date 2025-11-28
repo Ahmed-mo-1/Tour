@@ -31,8 +31,25 @@
 
 
 
-	<div style="position: absolute; bottom: 20px; right: 20px; ">
-		<button id="changeFloor">Floor Change</button>
+	<div style="position: absolute; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 6px">
+		<button id="changeFloor" class="nav-button fill">
+			<?php include_once get_template_directory() . '/assets/svgs/floors.svg'; ?>
+		</button>
+		<button id="" class="nav-button fill">
+			<?php include_once get_template_directory() . '/assets/svgs/food.svg'; ?>
+		</button>
+		<button id="" class="nav-button fill">
+			<?php include_once get_template_directory() . '/assets/svgs/share.svg'; ?>
+		</button>
+		<button id="" class="nav-button stroke">
+			<?php include_once get_template_directory() . '/assets/svgs/user.svg'; ?>
+		</button>
+		<button id="" class="nav-button fill">
+			<?php include_once get_template_directory() . '/assets/svgs/more.svg'; ?>
+		</button>
+		<button id="" class="nav-button fill">
+			<?php include_once get_template_directory() . '/assets/svgs/fullscreen.svg'; ?>
+		</button>
 	</div>
 </div>
 

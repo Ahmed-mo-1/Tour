@@ -16,20 +16,17 @@ async function tags(mpSdk) {
 		console.error('Error modifying tags:', error);
 	});
 
-
-	/* print tags data
+	/*
 	mpSdk.Mattertag.getData().then(tags => {
 		tags.forEach(item => {
 			item.enabled = false;
-			item.label = "teste";
 		});
-		console.log('test', tags);
+		console.log(tags);
 	})
 	.catch(error => {
 		console.error('Error getting Mattertag data:', error);
 	});
 	*/
-
 
 const popup = document.getElementById("video-label-container");
 const titleEl = popup.querySelector(".tag-title");
@@ -58,8 +55,9 @@ function getMediaHTML(mediaSrc) {
 function showTagPopup(tag) {
     titleEl.textContent = tag.label || "";
     descEl.textContent = tag.description || "";
-    mediaEl.innerHTML = getMediaHTML(tag.mediaSrc);
-
+	if(tag.sid == "dcpBCjdVdFn") {mediaEl.innerHTML = "hello"}
+	else {mediaEl.innerHTML = getMediaHTML(tag.mediaSrc);}
+    
     popup.classList.remove("hidden");
 
     document.getElementById("close-tag").onclick = () => {
