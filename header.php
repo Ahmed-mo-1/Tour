@@ -1,6 +1,6 @@
 <html>
   <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
      <script type="importmap">
       {
@@ -21,7 +21,7 @@ position : relative
 iframe {
 width: 100%;
 height: 100%;
-zoom: 2
+zoom: 3
 }
 
 .nav-button {
