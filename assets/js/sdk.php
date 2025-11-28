@@ -15,7 +15,7 @@ import { connect } from 'MP_SDK';
 		tags(mpSdk);
 		
 	} catch (e) {
-		console.error(e);
+		//console.error(e);
 	}
 })();
 
