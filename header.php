@@ -18,8 +18,11 @@ height: 100dvh;
 position : relative
 }
 
-iframe {width: 100%;
-height: 100%;}
+iframe {
+width: 100%;
+height: 100%;
+zoom: 2
+}
 
 .nav-button {
 	width: 40px;
