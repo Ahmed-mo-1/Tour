@@ -35,9 +35,9 @@
 		<button id="changeFloor" class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/floors.svg'; ?>
 		</button>
-		<button id="" class="nav-button fill">
+		<label for="popup-toggle" id="" class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/food.svg'; ?>
-		</button>
+		</label>
 		<button id="" class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/share.svg'; ?>
 		</button>
@@ -51,7 +51,97 @@
 			<?php include_once get_template_directory() . '/assets/svgs/fullscreen.svg'; ?>
 		</button>
 	</div>
+
+
+
+
+
+
+<input type="checkbox" id="popup-toggle" />
+<label for="popup-toggle" class="popup-btn"></label>
+
+<label for="popup-toggle"  class="popup-overlay">
+  <label for="popup-toggle" class="popup-close"></label>
+  <div class="popup-content">
+    <p></p>
+    <label for="popup-toggle" class="popup-close-btn"></label>
+  </div>
+</label>
+
+
+<style>
+#popup-toggle {
+  display: none;
+}
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+	visibility: hidden;
+  align-items: center;
+  justify-content: center;
+transition: 0.2s
+}
+
+.popup-content {
+    background: #0000006b;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: -500px;
+    color: white;
+    height: 70%;
+    border-radius: 50px 50px 0 0;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    transition: 0.2s;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#popup-toggle:checked + .popup-btn + .popup-overlay {
+  opacity: 1;
+	visibility: visible
+}
+
+#popup-toggle:checked + .popup-btn + .popup-overlay .popup-content {
+    bottom: 0px;
+}
+
+</style>
+
+
+
+
+
+
+	<div style="position: absolute; bottom: 20px; left: 20px; display: flex; flex-direction: column; gap: 6px">
+		<button class="nav-button fill">
+			reserve
+		</button>
+
+	</div>
+
+
+
 </div>
+
+<?php
+/*
+echo do_shortcode('[rs_user_register]');
+echo do_shortcode('[rs_user_login]');
+echo do_shortcode('[rs_make_reservation]');
+*/
+?>
 
 
 <?php //include_once get_template_directory() . '/rest.php';?>
