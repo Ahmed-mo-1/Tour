@@ -31,7 +31,7 @@
 
 
 
-	<div style="position: absolute; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 6px">
+	<div style="position: absolute; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 6px">
 		<button id="changeFloor" class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/floors.svg'; ?>
 		</button>
@@ -41,9 +41,9 @@
 		<button id="" class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/share.svg'; ?>
 		</button>
-		<button id="" class="nav-button stroke">
+		<label for="popup-toggle2" class="nav-button stroke">
 			<?php include_once get_template_directory() . '/assets/svgs/user.svg'; ?>
-		</button>
+		</label>
 		<button id="" class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/more.svg'; ?>
 		</button>
@@ -123,17 +123,165 @@ transition: 0.2s
 
 
 
+<input type="checkbox" id="popup-toggle2" />
+<label for="popup-toggle2" class="popup-btn"></label>
 
-	<div style="position: absolute; bottom: 20px; left: 20px; display: flex; flex-direction: column; gap: 6px">
-		<button class="nav-button fill">
-			reserve
-		</button>
+<label for="popup-toggle2"  class="popup-overlay">
+  <label for="popup-toggle2" class="popup-close"></label>
+  <div class="popup-content">
+    <?php 
+		echo do_shortcode('[rs_user_register]'); 
+		echo do_shortcode('[rs_user_login]');
+		?>
+    <label for="popup-toggle2" class="popup-close-btn"></label>
+  </div>
+</label>
+
+
+<style>
+#popup-toggle2 {
+  display: none;
+}
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+	visibility: hidden;
+  align-items: center;
+  justify-content: center;
+transition: 0.2s
+}
+
+.popup-content {
+    background: #0000006b;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: -500px;
+    color: white;
+    height: 70%;
+    border-radius: 50px 50px 0 0;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    transition: 0.2s;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#popup-toggle2:checked + .popup-btn + .popup-overlay {
+  opacity: 1;
+	visibility: visible
+}
+
+#popup-toggle2:checked + .popup-btn + .popup-overlay .popup-content {
+    bottom: 0px;
+}
+
+</style>
+
+
+
+
+
+
+	<div style="position: absolute; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 6px">
+
+	<div class="reservation-btn">
+	<button class="popup-trigger" id="reservation-btn" data-translate="reservation-trigger-btn">
+	<label for="popup-toggle3">Reserve Now</label>
+	</button></div>
 
 	</div>
 
 
 
 </div>
+
+
+
+
+
+
+
+
+<input type="checkbox" id="popup-toggle3" />
+<label for="popup-toggle3" class="popup-btn"></label>
+
+<label for="popup-toggle3"  class="popup-overlay">
+  <label for="popup-toggle3" class="popup-close"></label>
+  <div class="popup-content">
+    <?php 
+		echo do_shortcode('[rs_make_reservation]');
+	?>
+    <label for="popup-toggle3" class="popup-close-btn"></label>
+  </div>
+</label>
+
+
+<style>
+#popup-toggle3 {
+  display: none;
+}
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+	visibility: hidden;
+  align-items: center;
+  justify-content: center;
+transition: 0.2s
+}
+
+.popup-content {
+    background: #0000006b;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: -500px;
+    color: white;
+    height: 70%;
+    border-radius: 50px 50px 0 0;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    transition: 0.2s;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#popup-toggle3:checked + .popup-btn + .popup-overlay {
+  opacity: 1;
+	visibility: visible
+}
+
+#popup-toggle3:checked + .popup-btn + .popup-overlay .popup-content {
+    bottom: 0px;
+}
+
+</style>
+
+
+
+
+
+
 
 <?php
 /*
@@ -147,3 +295,236 @@ echo do_shortcode('[rs_make_reservation]');
 <?php //include_once get_template_directory() . '/rest.php';?>
 
 <?php get_footer(); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+.open-now-btn {
+margin: 0 auto;
+padding: 1px;
+background: #000;
+text-align: center;
+border-radius: 20px;
+position: relative;
+z-index: 10;
+}
+
+.open-now-btn button {
+background: #000;
+color:white;
+}
+
+.open-now-btn button:hover {
+background: #000;
+color:white;
+letter-spacing : 1px;
+}
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.open-now-btn::after, .open-now-btn::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #0000, #00ff00, #0000, #00ff00, #0000) !important;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 1px;
+  border-radius: 20px;
+  animation: 3s spin linear infinite;
+}
+.open-now-btn::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+.open-now-btn:hover::before{
+  filter: blur(2rem);
+  opacity: 0.7;
+}
+
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.close-now-btn {
+margin: 0 auto;
+padding: 1px;
+background: #000;
+text-align: center;
+border-radius: 20px;
+position: relative;
+z-index: 10;
+}
+
+.close-now-btn button {
+background: #000;
+color:white;
+}
+
+.close-now-btn button:hover {
+background: #000;
+color:white;
+letter-spacing : 1px;
+}
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.close-now-btn::after, .close-now-btn::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #0000, #ff0000, #0000, #ff0000, #0000) !important;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 1px;
+  border-radius: 20px;
+  animation: 3s spin linear infinite;
+}
+.close-now-btn::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+.close-now-btn:hover::before{
+  filter: blur(2rem);
+  opacity: 0.7;
+}
+
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+}
+
+
+
+
+
+
+
+
+#reservation-btn {
+margin: 0 auto;
+padding: 8px 12px;
+background: #000;
+text-align: center;
+border-radius: 20px;
+position: relative;
+z-index: 10;
+border: none;
+}
+
+
+.reservation-btn {
+margin: 0 auto;
+padding: 1px;
+background: #000;
+text-align: center;
+border-radius: 20px;
+position: relative;
+z-index: 10;
+}
+
+.reservation-btn button {
+background: #000;
+color:white;
+}
+
+.reservation-btn button:hover {
+background: #000;
+color:white;
+letter-spacing : 1px;
+}
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.reservation-btn::after, .reservation-btn::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #0000, #ff0101, #0000, #ff0101, #0000) !important;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 1px;
+  border-radius: 20px;
+  animation: 3s spin linear infinite;
+}
+.reservation-btn::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+.reservation-btn:hover::before{
+  filter: blur(2rem);
+  opacity: 0.7;
+}
+
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+}
+
+
+
+
+
+</style>
