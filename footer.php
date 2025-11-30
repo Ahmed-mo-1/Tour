@@ -9,3 +9,22 @@
 <?php
 	wp_footer();
 ?>
+
+<script>
+
+function toggleFullscreen() {
+
+	if (!document.fullscreenElement) {
+
+		container.requestFullscreen().catch(err => {
+			alert(`Error attempting to enable fullscreen: ${err.message}`);
+		});
+
+	}
+
+	else {
+		document.exitFullscreen();
+	}
+
+}
+</script>

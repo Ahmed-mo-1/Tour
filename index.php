@@ -27,6 +27,23 @@
 ?>
 
 <div id="container" style="position: relative">
+
+
+
+<div id="video-label-container" class="tag-popup hidden">
+    <button id="close-tag" class="tag-popup-close">×</button>
+
+    <div class="tag-popup-content">
+        <h2 class="tag-title"></h2>
+        <p class="tag-description"></p>
+        <div class="tag-media"></div>
+    </div>
+</div>
+
+
+
+
+
 	<iframe src='<?php echo  $iframe_url;  ?>'	allowfullscreen frameborder="0" allow="xr-spatial-tracking" id="showcase-iframe"></iframe>
 
 
@@ -47,7 +64,7 @@
 		<button id="" class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/more.svg'; ?>
 		</button>
-		<button id="" class="nav-button fill">
+		<button id="" class="nav-button fill" onclick="toggleFullscreen()">
 			<?php include_once get_template_directory() . '/assets/svgs/fullscreen.svg'; ?>
 		</button>
 	</div>

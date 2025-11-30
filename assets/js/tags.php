@@ -55,7 +55,7 @@ function getMediaHTML(mediaSrc) {
 function showTagPopup(tag) {
     titleEl.textContent = tag.label || "";
     descEl.textContent = tag.description || "";
-	if(tag.sid == "dcpBCjdVdFn") {mediaEl.innerHTML = "hello"}
+	if(tag.sid == "dcpBCjdVdFn") {mediaEl.innerHTML = "<img style='height: auto' src='https://tour-uae.com/images/media/3_1764331715.webp' />"}
 	else {mediaEl.innerHTML = getMediaHTML(tag.mediaSrc);}
     
     popup.classList.remove("hidden");
@@ -98,15 +98,6 @@ mpSdk.Tag.openTags.subscribe({
     
 
 
-<div id="video-label-container" class="tag-popup hidden">
-    <button id="close-tag" class="tag-popup-close">×</button>
-
-    <div class="tag-popup-content">
-        <h2 class="tag-title"></h2>
-        <p class="tag-description"></p>
-        <div class="tag-media"></div>
-    </div>
-</div>
 
 
     
