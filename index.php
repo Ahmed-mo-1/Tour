@@ -55,7 +55,7 @@
 		<label for="popup-toggle" id="" class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/food.svg'; ?>
 		</label>
-		<button id="" class="nav-button fill">
+		<button id="" onclick="shareContent()" class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/share.svg'; ?>
 		</button>
 		<label for="popup-toggle2" class="nav-button stroke">
@@ -70,7 +70,25 @@
 	</div>
 
 
+<script>
 
+function shareContent() {
+	const shareData = {
+	  title: document.title,
+	  text: 'Check out this page!',
+	  url: window.location.href
+	};
+
+	if (navigator.share) {
+	  navigator.share(shareData)
+		.then(() => console.log('Content shared successfully!'))
+		.catch((error) => console.error('Error sharing:', error));
+	} else {
+	  alert('Share not supported on this browser.');
+	}
+}
+
+</script>
 
 
 
