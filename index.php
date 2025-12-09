@@ -1,14 +1,39 @@
-<?php 
-	get_header(); 
-?>
+<?php get_header(); ?>
+
+
+
+<style>
+#custom-auth-container { max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; }
+input { width: 100%; padding: 10px; margin: 10px 0; }
+/*button { padding: 10px 15px; margin: 5px; cursor: pointer; }*/
+.time-slots {
+    display: grid;
+    flex-wrap: wrap;
+    gap: 5px;
+    height: 340px;
+    overflow: auto;
+    grid-template-columns: repeat(4, 1fr);
+}
+.time-slot-btn { background: #f0f0f0; border: 1px solid #ccc; }
+.time-slot-btn.selected { background: #4CAF50; color: white; }
+#reservations-list li { padding: 10px; border: 1px solid #eee; margin: 5px 0; }
+#message { margin: 10px 0; padding: 10px; }
+.success { color: green; }
+.error { color: red; }
+</style>
+
+
+
+
+
+
+
 
 <?php
 
-	$id = 1;  
 	$wpdb->prefix = 'wp_';
 	$restaurant = $wpdb->get_row(
-		$wpdb->prepare("SELECT * FROM {$wpdb->prefix}rs_restaurants WHERE restaurant_id = %d", $id)
-	);
+		$wpdb->prepare("SELECT * FROM {$wpdb->prefix}tour_restaurant_info"));
 	/*
 	echo $restaurant->name;
 	echo $restaurant->tour_id;
@@ -98,8 +123,8 @@ function shareContent() {
 <label for="popup-toggle"  class="popup-overlay">
   <label for="popup-toggle" class="popup-close"></label>
   <div class="popup-content">
-    <p></p>
-    <label for="popup-toggle" class="popup-close-btn"></label>
+<?php echo do_shortcode('[tour_food_grid]'); ?>
+
   </div>
 </label>
 
@@ -156,72 +181,7 @@ transition: 0.2s
 
 
 
-
-
-<input type="checkbox" id="popup-toggle2" />
-<label for="popup-toggle2" class="popup-btn"></label>
-
-<label for="popup-toggle2"  class="popup-overlay">
-  <label for="popup-toggle2" class="popup-close"></label>
-  <div class="popup-content">
-    <?php 
-		echo do_shortcode('[rs_user_register]'); 
-		echo do_shortcode('[rs_user_login]');
-		?>
-    <label for="popup-toggle2" class="popup-close-btn"></label>
-  </div>
-</label>
-
-
-<style>
-#popup-toggle2 {
-  display: none;
-}
-
-
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  opacity: 0;
-	visibility: hidden;
-  align-items: center;
-  justify-content: center;
-transition: 0.2s
-}
-
-.popup-content {
-    background: #0000006b;
-    padding: 20px;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    position: absolute;
-    bottom: -500px;
-    color: white;
-    height: 70%;
-    border-radius: 50px 50px 0 0;
-    border: 1px solid #ccc;
-    border-bottom: 0;
-    transition: 0.2s;
-    margin: auto;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#popup-toggle2:checked + .popup-btn + .popup-overlay {
-  opacity: 1;
-	visibility: visible
-}
-
-#popup-toggle2:checked + .popup-btn + .popup-overlay .popup-content {
-    bottom: 0px;
-}
-
-</style>
+<?php include_once get_template_directory() .  "/components/account-popup.php" ; ?>
 
 
 
@@ -233,6 +193,5 @@ transition: 0.2s
 
 
 </div>
-
 
 <?php get_footer(); ?>

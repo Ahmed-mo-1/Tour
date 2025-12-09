@@ -133,65 +133,80 @@
 
 
 <input type="checkbox" id="popup-toggle3" />
-<label for="popup-toggle3" class="popup-btn"></label>
+<label for="popup-toggle3" class="sidebar-overlay"></label>
 
-<label for="popup-toggle3"  class="popup-overlay">
-  <label for="popup-toggle3" class="popup-close"></label>
-  <div class="popup-content">
-    <?php 
-		echo do_shortcode('[rs_make_reservation]');
-	?>
-    <label for="popup-toggle3" class="popup-close-btn"></label>
-  </div>
-</label>
+<div class="sidebar">
+
+            <div id="user-section2" style="display:none;">
+                <h3>New Reservation</h3>
+                <form id="reservation-form">
+                    <input type="date" name="res_date" required min="<?php echo date('Y-m-d'); ?>">
+                    <input type="number" name="member_count" placeholder="Guests" min="1" required>
+                    <div class="time-slots" id="time-slots"></div>
+                    <input type="hidden" name="res_time" id="res_time" required>
+                    <input type="hidden" name="reservation_id" id="reservation_id">
+                    <?php wp_nonce_field('tour_reservation_nonce_action', 'tour_reservation_nonce'); ?>
+                    <button type="submit">Book Reservation</button>
+                </form>
+			</div>
+
+</div>
 
 
 <style>
+/* Hide the checkbox */
 #popup-toggle3 {
   display: none;
 }
 
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -350px;
+  width: 350px;
+  height: 100%;
+  background: #222;
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  transition: left 0.3s ease;
+  z-index: 1001;
+}
 
-.popup-overlay {
+/* Overlay (label that acts as backdrop) */
+.sidebar-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  opacity: 0;
-	visibility: hidden;
-  align-items: center;
-  justify-content: center;
-transition: 0.2s
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 1000;
+  cursor: pointer;
 }
 
-.popup-content {
-    background: #0000006b;
-    padding: 20px;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    position: absolute;
-    bottom: -500px;
-    color: white;
-    height: 70%;
-    border-radius: 50px 50px 0 0;
-    border: 1px solid #ccc;
-    border-bottom: 0;
-    transition: 0.2s;
-    margin: auto;
-    left: 50%;
-    transform: translateX(-50%);
+/* Open button */
+.sidebar-open-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+  position: relative;
+  z-index: 999;
 }
 
-#popup-toggle3:checked + .popup-btn + .popup-overlay {
-  opacity: 1;
-	visibility: visible
+/* Show sidebar and overlay when checkbox is checked */
+#popup-toggle3:checked ~ .sidebar {
+  left: 0;
 }
 
-#popup-toggle3:checked + .popup-btn + .popup-overlay .popup-content {
-    bottom: 0px;
+#popup-toggle3:checked ~ .sidebar-overlay {
+  display: block;
 }
+
 
 </style>
