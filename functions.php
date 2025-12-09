@@ -610,3 +610,25 @@ add_shortcode('tour_food_grid', function() {
 
     return $html . "</div>";
 });
+
+
+
+add_shortcode('tour_restaurant_info', function() {
+    global $wpdb;
+    $table = $wpdb->prefix . "tour_restaurant_info";
+    $rows = $wpdb->get_results("SELECT * FROM $table");
+
+    $html = "<div>";
+
+    foreach ($rows as $r) {
+        $html .= "
+            <div>
+                <h3>{$r->name}</h3>
+                <p>{$r->category}</p>
+                <strong>{$r->phone}</strong>
+            </div>
+        ";
+    }
+
+    return $html . "</div>";
+});

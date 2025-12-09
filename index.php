@@ -86,13 +86,94 @@ input { width: 100%; padding: 10px; margin: 10px 0; }
 		<label for="popup-toggle2" class="nav-button stroke">
 			<?php include_once get_template_directory() . '/assets/svgs/user.svg'; ?>
 		</label>
-		<button id="" class="nav-button fill">
+		<label for="popup-toggle10"  class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/more.svg'; ?>
-		</button>
+		</label>
 		<button id="" class="nav-button fill" onclick="toggleFullscreen()">
 			<?php include_once get_template_directory() . '/assets/svgs/fullscreen.svg'; ?>
 		</button>
 	</div>
+
+
+
+
+
+
+
+<input type="checkbox" id="popup-toggle10" />
+<label for="popup-toggle10" class="popup-btn"></label>
+
+<label for="popup-toggle10"  class="popup-overlay10">
+  <label for="popup-toggle10" class="popup-close"></label>
+  <div class="popup-content">
+<?php echo do_shortcode('[tour_restaurant_info]'); ?>
+
+  </div>
+</label>
+
+
+<style>
+#popup-toggle10 {
+  display: none;
+}
+
+
+.popup-overlay10 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+	visibility: hidden;
+  align-items: center;
+  justify-content: center;
+transition: 0.2s
+}
+
+.popup-content {
+    background: #0000006b;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: -500px;
+    color: white;
+    height: 70%;
+    border-radius: 50px 50px 0 0;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    transition: 0.2s;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#popup-toggle10:checked + .popup-btn + .popup-overlay10 {
+  opacity: 1;
+	visibility: visible
+}
+
+#popup-toggle10:checked + .popup-btn + .popup-overlay10 .popup-content {
+    bottom: 0px;
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <script>
