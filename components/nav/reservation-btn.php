@@ -137,6 +137,11 @@
 
 <div class="sidebar">
 
+		<div id="auth-section2">
+			<label for="popup-toggle2" onclick="openLoginPage()">login first</label>
+		</div>
+
+
             <div id="user-section2" style="display:none;">
                 <h3>New Reservation</h3>
                 <form id="reservation-form">
@@ -148,6 +153,7 @@
                     <?php wp_nonce_field('tour_reservation_nonce_action', 'tour_reservation_nonce'); ?>
                     <button type="submit">Book Reservation</button>
                 </form>
+<label for="popup-toggle2" onclick="openLoginPage()">reservations</label>
 			</div>
 
 </div>
@@ -166,7 +172,9 @@
   left: -350px;
   width: 350px;
   height: 100%;
-  background: #222;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
   color: white;
   padding: 20px;
   box-shadow: 2px 0 10px rgba(0,0,0,0.3);

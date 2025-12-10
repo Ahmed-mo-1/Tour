@@ -29,7 +29,7 @@
                 <?php wp_nonce_field('custom_logout_nonce_action', 'custom_logout_nonce'); ?>
                 <h3>My Reservations</h3>
                 <ul id="reservations-list"></ul>
-
+				<label for="popup-toggle3" onclick="openReservationPage()">Reserve</label>
             </div>
 
             <div id="message"></div>

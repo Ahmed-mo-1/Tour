@@ -1,4 +1,24 @@
 <?php
+
+
+
+// Enqueue website scripts
+function tour_scripts() {
+
+    wp_enqueue_script(
+        'switch-popups',
+        get_template_directory_uri() . '/js/switch-popups.js',
+        array(), // Dependencies (none)
+        filemtime( get_template_directory() . '/js/switch-popups.js' ), // Cache busting
+        true // Load in footer
+    );
+
+}
+add_action( 'wp_enqueue_scripts', 'tour_scripts' );
+
+
+
+
 // --- GET FRESH CONTENT ---
 add_action('wp_ajax_get_fresh_content', 'get_fresh_content_callback');
 add_action('wp_ajax_nopriv_get_fresh_content', 'get_fresh_content_callback');

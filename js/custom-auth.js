@@ -102,6 +102,8 @@ jQuery(document).ready(function($) {
                     $('#reservation-form')[0].reset();
                     $('#reservation_id').val('');
                     $('.time-slot-btn').removeClass('selected');
+					$('#popup-toggle3').prop('checked', false);
+					$('#popup-toggle2').prop('checked', true);
                 }
             });
         });
@@ -119,6 +121,8 @@ jQuery(document).ready(function($) {
             $('[name="res_date"]').val(res.reservation_date);
             $('[name="member_count"]').val(res.member_count);
             $('#reservation_id').val(res.id);
+					$('#popup-toggle2').prop('checked', false);
+					$('#popup-toggle3').prop('checked', true);
             $('.time-slot-btn[data-time="' + res.reservation_time + '"]').click();
             $('html, body').animate({ scrollTop: $('#reservation-form').offset().top }, 500);
         });
@@ -140,6 +144,7 @@ jQuery(document).ready(function($) {
     // FUNCTIONS
     function showUserSection() {
         $('#auth-section').hide();
+        $('#auth-section2').hide();
         $('#user-section').show();
         $('#user-section2').show();
         $('#user-display-name').text(CustomAuth.user_name);
@@ -149,6 +154,7 @@ jQuery(document).ready(function($) {
         $('#user-section').hide();
         $('#user-section2').hide();
         $('#auth-section').show();
+        $('#auth-section2').show();
         $('#custom-auth-form')[0].reset();
         $('#reservations-list').empty();
     }
