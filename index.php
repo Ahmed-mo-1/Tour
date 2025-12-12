@@ -3,23 +3,7 @@
 
 
 <style>
-#custom-auth-container { max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; }
-input { width: 100%; padding: 10px; margin: 10px 0; }
-/*button { padding: 10px 15px; margin: 5px; cursor: pointer; }*/
-.time-slots {
-    display: grid;
-    flex-wrap: wrap;
-    gap: 5px;
-    height: 340px;
-    overflow: auto;
-    grid-template-columns: repeat(4, 1fr);
-}
-.time-slot-btn { background: #f0f0f0; border: 1px solid #ccc; }
-.time-slot-btn.selected { background: #4CAF50; color: white; }
-#reservations-list li { padding: 10px; border: 1px solid #eee; margin: 5px 0; }
-#message { margin: 10px 0; padding: 10px; }
-.success { color: green; }
-.error { color: red; }
+
 </style>
 
 
@@ -77,7 +61,7 @@ input { width: 100%; padding: 10px; margin: 10px 0; }
 		<button id="changeFloor" class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/floors.svg'; ?>
 		</button>
-		<label for="popup-toggle" id="" class="nav-button fill">
+		<label for="food-sidebar-toggle" id="" class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/food.svg'; ?>
 		</label>
 		<button id="" onclick="shareContent()" class="nav-button fill">
@@ -86,7 +70,7 @@ input { width: 100%; padding: 10px; margin: 10px 0; }
 		<label for="popup-toggle2" class="nav-button stroke">
 			<?php include_once get_template_directory() . '/assets/svgs/user.svg'; ?>
 		</label>
-		<label for="popup-toggle10"  class="nav-button fill">
+		<label for="info-sidebar-toggle"  class="nav-button fill">
 			<?php include_once get_template_directory() . '/assets/svgs/more.svg'; ?>
 		</label>
 		<button id="" class="nav-button fill" onclick="toggleFullscreen()">
@@ -99,70 +83,12 @@ input { width: 100%; padding: 10px; margin: 10px 0; }
 
 
 
+<input type="checkbox" id="info-sidebar-toggle" />
+<label for="info-sidebar-toggle" class="info-sidebar-overlay"></label>
 
-<input type="checkbox" id="popup-toggle10" />
-<label for="popup-toggle10" class="popup-btn"></label>
-
-<label for="popup-toggle10"  class="popup-overlay10">
-  <label for="popup-toggle10" class="popup-close"></label>
-  <div class="popup-content">
+<div class="info-sidebar">
 <?php echo do_shortcode('[tour_restaurant_info]'); ?>
-
-  </div>
-</label>
-
-
-<style>
-#popup-toggle10 {
-  display: none;
-}
-
-
-.popup-overlay10 {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  opacity: 0;
-	visibility: hidden;
-  align-items: center;
-  justify-content: center;
-transition: 0.2s
-}
-
-.popup-content {
-    background: #0000006b;
-    padding: 20px;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    position: absolute;
-    bottom: -500px;
-    color: white;
-    height: 70%;
-    border-radius: 50px 50px 0 0;
-    border: 1px solid #ccc;
-    border-bottom: 0;
-    transition: 0.2s;
-    margin: auto;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#popup-toggle10:checked + .popup-btn + .popup-overlay10 {
-  opacity: 1;
-	visibility: visible
-}
-
-#popup-toggle10:checked + .popup-btn + .popup-overlay10 .popup-content {
-    bottom: 0px;
-}
-
-</style>
-
-
+</div>
 
 
 
@@ -198,69 +124,17 @@ function shareContent() {
 
 
 
-<input type="checkbox" id="popup-toggle" />
-<label for="popup-toggle" class="popup-btn"></label>
 
-<label for="popup-toggle"  class="popup-overlay">
-  <label for="popup-toggle" class="popup-close"></label>
-  <div class="popup-content">
+
+
+<input type="checkbox" id="food-sidebar-toggle" />
+<label for="food-sidebar-toggle" class="food-sidebar-overlay"></label>
+
+<div class="food-sidebar">
 <?php echo do_shortcode('[tour_food_grid]'); ?>
+</div>
 
-  </div>
-</label>
-
-
-<style>
-#popup-toggle {
-  display: none;
-}
-
-
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  opacity: 0;
-	visibility: hidden;
-  align-items: center;
-  justify-content: center;
-transition: 0.2s
-}
-
-.popup-content {
-    background: #0000006b;
-    padding: 20px;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    position: absolute;
-    bottom: -500px;
-    color: white;
-    height: 70%;
-    border-radius: 50px 50px 0 0;
-    border: 1px solid #ccc;
-    border-bottom: 0;
-    transition: 0.2s;
-    margin: auto;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#popup-toggle:checked + .popup-btn + .popup-overlay {
-  opacity: 1;
-	visibility: visible
-}
-
-#popup-toggle:checked + .popup-btn + .popup-overlay .popup-content {
-    bottom: 0px;
-}
-
-</style>
-
-
+ 
 
 <?php include_once get_template_directory() .  "/components/account-popup.php" ; ?>
 
@@ -274,5 +148,9 @@ transition: 0.2s
 
 
 </div>
+<!-- Disable right-click -->
+<script>
+//document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
 
 <?php get_footer(); ?>

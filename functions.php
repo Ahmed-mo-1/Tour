@@ -5,6 +5,13 @@
 // Enqueue website scripts
 function tour_scripts() {
 
+	wp_enqueue_style(
+		'app.css',
+		get_template_directory_uri(). '/assets/css/app.css',
+		array(),
+		filemtime(get_template_directory(). '/assets/css/app.css'),
+		'all'
+	);
     wp_enqueue_script(
         'switch-popups',
         get_template_directory_uri() . '/js/switch-popups.js',

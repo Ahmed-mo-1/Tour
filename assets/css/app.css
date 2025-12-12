@@ -1,3 +1,78 @@
+/* Disable all text selection */
+* {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
+/* Remove Chrome selection highlight */
+::selection,
+::-moz-selection {
+    background: transparent !important;
+}
+
+/* Remove Chrome autofill yellow background */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+    box-shadow: 0 0 0 1000px #fff inset !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+/* Disable focus outlines */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Optional (mobile copy/long-press disable) */
+* {
+    -webkit-touch-callout: none !important;
+}
+
+/* Disable dragging */
+img, a, * {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+
+
+
+
+
+
+
+
+/* Target the scrollbar */
+*::-webkit-scrollbar {
+  width: 6px; /* width of vertical scrollbar */
+  height: 6px; /* height of horizontal scrollbar */
+}
+
+/* Track (background) */
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+/* Handle (thumb) */
+*::-webkit-scrollbar-thumb {
+  background: #500;
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+  background: #300;
+}
+
+
+
+
+
 * {padding: 0; margin: 0; box-sizing: border-box}
 #container{
 width: 100%;
@@ -133,3 +208,443 @@ height: 100%;
     border: none;
     border-radius: 16px;
 }
+
+
+
+
+
+
+
+
+
+
+
+/*reservation button*/
+
+
+#reservation-btn {
+	padding: 8px 12px;
+	background: #000;
+	color: white;
+	text-align: center;
+	border-radius: 20px;
+	border: none;
+}
+
+
+.reservation-btn {
+	border-radius: 20px;
+	position: relative;
+	z-index: 0;
+}
+
+
+@property --angle{
+	syntax: "<angle>";
+	initial-value: 0deg;
+	inherits: false;
+}
+
+.reservation-btn::after, .reservation-btn::before{
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+	z-index: -1;
+	padding: 2px;
+	background-image: conic-gradient(from var(--angle), #0000, #ff0101, #0000, #ff0101, #0000) !important;
+	border-radius: 20px;
+	animation: 3s spin linear infinite;
+}
+
+.reservation-btn::before{
+	filter: blur(10px);
+	opacity: 0.5;
+}
+
+.reservation-btn:hover::before{
+	filter: blur(20px);
+	opacity: 1;
+}
+
+@keyframes spin{
+	from{
+		--angle: 0deg;
+	}
+	to{
+		--angle: 360deg;
+	}
+}
+
+
+/*reservation popup*/
+/* Hide the checkbox */
+#popup-toggle3 {
+  display: none;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+inset: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  transition: 0.3s ease;
+  z-index: 1001;
+	opacity: 0;
+visibility: hidden;
+border-radius: 20px;
+display: flex;
+align-items: center;
+justify-content: center
+}
+
+/* Overlay (label that acts as backdrop) */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+/* Open button */
+.sidebar-open-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+  position: relative;
+  z-index: 999;
+}
+
+/* Show sidebar and overlay when checkbox is checked */
+#popup-toggle3:checked ~ .sidebar {
+opacity: 1;
+visibility: visible
+}
+
+#popup-toggle3:checked ~ .sidebar-overlay {
+  display: block;
+}
+
+
+/*form*/
+#custom-auth-container { max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; }
+input { width: 100%; padding: 10px;  }
+/*button { padding: 10px 15px; margin: 5px; cursor: pointer; }*/
+.time-slots {
+    display: grid;
+    flex-wrap: wrap;
+    gap: 5px;
+    height: 340px;
+    overflow: auto;
+    grid-template-columns: repeat(4, 1fr);
+width: 100%
+}
+.time-slot-btn { background: #f0f0f0; border: 1px solid #ccc; background: black; color: white; border-radius: 10px}
+.time-slot-btn.selected { background: #555; color: white; }
+#reservations-list li {
+    padding: 10px;
+    border: 1px solid #eee;
+    margin: 5px 0;
+    border-radius: 14px;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+#message { display: none !important;  margin: 10px 0; padding: 10px; }
+.success { color: green; }
+.error { color: red; }
+button[type="submit"] {
+	width: 100%;
+	padding: 14px;
+	border-radius: 14px;
+background: black;
+color: white;
+border: none
+}
+
+button.edit-res, button.cancel-res {
+    background: #500;
+    border: 0;
+    color: white;
+    padding: 7px;
+    border-radius: 14px;
+}
+
+form#reservation-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+gap :10px
+}
+
+#user-section2 {
+    width: 96%;
+    max-width: 500px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px
+}
+
+div#user-section {
+    width: 96%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+
+/*user section*/
+/* Hide the checkbox */
+#popup-toggle2 {
+  display: none;
+}
+
+/* Sidebar */
+.sidebar2 {
+  position: fixed;
+inset: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  transition: 0.3s ease;
+  z-index: 1001;
+	opacity: 0;
+visibility: hidden;
+border-radius: 20px;
+display: flex;
+align-items: center;
+justify-content: center
+}
+
+/* Overlay (label that acts as backdrop) */
+.sidebar-overlay2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+/* Open button */
+.sidebar-open-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+  position: relative;
+  z-index: 999;
+}
+
+/* Show sidebar and overlay when checkbox is checked */
+#popup-toggle2:checked ~ .sidebar2 {
+opacity: 1;
+visibility: visible
+}
+
+#popup-toggle2:checked ~ .sidebar-overlay2 {
+  display: block;
+}
+
+
+ul#reservations-list {
+    list-style: none;
+    height: 500px;
+    overflow: auto;
+}
+
+
+
+
+
+
+
+/**/
+.openReservationPage, .openLoginPage, #custom-logout-button {
+	background: #500;
+	color: white;
+	border-radius: 14px;
+	padding: 10px;
+border: none
+}
+
+
+
+
+
+
+
+/*foods*/
+
+.tour-food-item {
+    background: #0005;
+    border-radius: 14px;
+}
+
+.tour-food-item img {
+    border-radius: 14px;
+}
+
+
+
+#food-sidebar-toggle {
+  display: none;
+}
+
+/* Sidebar */
+.food-sidebar {
+  position: fixed;
+inset: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  transition: 0.3s ease;
+  z-index: 1001;
+	opacity: 0;
+visibility: hidden;
+border-radius: 20px;
+display: flex;
+align-items: center;
+justify-content: center
+}
+
+/* Overlay (label that acts as backdrop) */
+.food-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+/* Open button */
+.sidebar-open-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+  position: relative;
+  z-index: 999;
+}
+
+/* Show sidebar and overlay when checkbox is checked */
+#food-sidebar-toggle:checked ~ .food-sidebar {
+opacity: 1;
+visibility: visible
+}
+
+#food-sidebar-toggle:checked ~ .food-sidebar-overlay {
+  display: block;
+}
+
+
+
+
+
+
+
+
+/*info sidebar*/
+
+#info-sidebar-toggle {
+  display: none;
+}
+
+/* Sidebar */
+.info-sidebar {
+  position: fixed;
+inset: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  transition: 0.3s ease;
+  z-index: 1001;
+	opacity: 0;
+visibility: hidden;
+border-radius: 20px;
+display: flex;
+align-items: center;
+justify-content: center
+}
+
+/* Overlay (label that acts as backdrop) */
+.info-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+/* Open button */
+.info-sidebar-open-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+  position: relative;
+  z-index: 999;
+}
+
+/* Show sidebar and overlay when checkbox is checked */
+#info-sidebar-toggle:checked ~ .info-sidebar {
+opacity: 1;
+visibility: visible
+}
+
+#info-sidebar-toggle:checked ~ .info-sidebar-overlay {
+  display: block;
+}
+
