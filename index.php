@@ -150,7 +150,7 @@ function shareContent() {
 </div>
 <!-- Disable right-click -->
 <script>
-//document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('contextmenu', e => e.preventDefault());
 </script>
 
 <?php get_footer(); ?>
