@@ -1,4 +1,46 @@
 /* Disable all text selection */
+
+
+/* Disable all text selection highlight */
+::selection,
+::-moz-selection {
+    background: transparent !important;
+    color: inherit !important;
+}
+
+/* Remove Chrome focus borders and glow */
+*:focus,
+:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Inputs */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+/* Autofill background + borders */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+            box-shadow: 0 0 0 1000px #fff inset !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+/* Remove mobile tap highlight */
+* {
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+
+
+
 * {
     user-select: none !important;
     -webkit-user-select: none !important;
