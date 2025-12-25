@@ -26,7 +26,7 @@
 	*/
 
 
-	//$tour_url = 'https://my.matterport.com/show?m=';
+	$tour_url = 'https://my.matterport.com/show?m=';
 	$tour_url = get_template_directory_uri() . '/bundle/showcase.html?m=';
 	$tour = $restaurant->tour_id;
 	$applicationKey = '&applicationKey=crit9r5d4zduc09z4kihmcm7d';
